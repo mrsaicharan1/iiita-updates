@@ -1,7 +1,3 @@
-welcome: Welcome to memory game. I'm going to say three numbers for you to repeat backwards. Ready?
+welcome: Welcome to the Best buy deals point!
 
-round: Can you repeat the numbers {{ numbers|join(", ") }} backwards?
-
-win: Good job!
-
-lose: Sorry, that's the wrong answer.
+deals: Here are the op 5 deals of today! {{ deals }}
