@@ -6,5 +6,5 @@ import urllib.request
 source = urllib.request.urlopen('https://www.bestbuy.com/site/clp/sale-page/pcmcat185700050011.c?id=pcmcat185700050011').read()
 soup = bs.BeautifulSoup(source,'lxml')
 
-for deal in soup.find_all('a',attrs={'class':'offer-link'}):
+for deal in soup.find_all('h3',attrs={'class':'offer-link'}):
     print (deal.text)

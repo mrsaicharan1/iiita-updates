@@ -1,17 +1,25 @@
-from flask import Flask, render_template
-from flask_ask import Ask, statement, question
 import bs4 as bs
 import urllib.request
 
+from flask import Flask, render_template
+from flask_ask import Ask, statement, question
+import requests
+
 app = Flask(__name__)
-ask = Ask(app, '/')
+ask = Ask(app, '/bbdeals')
 source = urllib.request.urlopen('https://www.bestbuy.com/site/clp/sale-page/pcmcat185700050011.c?id=pcmcat185700050011').read()
 soup = bs.BeautifulSoup(source,'lxml')
 
-def GetDeals():
-    for deal in soup.find_all('h3',attrs={"class":"offer-link"}):
-        return statement(deal.text)
 
+def GetDeals():
+    deals = []
+    for deal in soup.find_all('h3',attrs={"class":"offer-link"}):
+        deals.append(deal)
+    return deals
+
+@app.route('/')
+def homepage():
+    return "hi there, how ya doin?"
 
 @ask.launch
 def launched():
@@ -22,7 +30,7 @@ def launched():
 def ShareDeals():
     deals = GetDeals()
     deals_msg = "The top deals for today are {}".format(deals)
-    return statement(deals)
+    return statement(deals_msg)
 
 @ask.intent('NoIntent')
 def NoIntent():
