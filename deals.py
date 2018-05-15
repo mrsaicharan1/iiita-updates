@@ -1,25 +1,23 @@
 import bs4 as bs
 import urllib.request
+import time
 
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question
 import requests
 
 app = Flask(__name__)
-ask = Ask(app, '/bbdeals')
+ask = Ask(app, "/")
 source = urllib.request.urlopen('https://www.bestbuy.com/site/clp/sale-page/pcmcat185700050011.c?id=pcmcat185700050011').read()
 soup = bs.BeautifulSoup(source,'lxml')
 
-
 def GetDeals():
+    time.sleep(1)
     deals = []
     for deal in soup.find_all('h3',attrs={"class":"offer-link"}):
         deals.append(deal)
     return deals
 
-@app.route('/')
-def homepage():
-    return "hi there, how ya doin?"
 
 @ask.launch
 def launched():
