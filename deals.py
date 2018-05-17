@@ -9,25 +9,28 @@ import requests
 app = Flask(__name__)
 ask = Ask(app, "/")
 
-def GetDeals():
-    source = urllib.request.urlopen('https://www.bestbuy.com/site/clp/sale-page/pcmcat185700050011.c?id=pcmcat185700050011').read()
+
+
+def GetEvents():
+    source = urllib.request.urlopen('https://www.iiita.ac.in').read()
     soup = bs.BeautifulSoup(source,'lxml')
-    deals = []
-    for deal in soup.find_all('h3',attrs={"class":"offer-link"}):
-        deals.append(deal)
-    return deals
+    events = []
+    for event in soup.find_all('h5'):
+        events.append(event.text)
+    return events
+
 
 
 @ask.launch
 def launched():
-    welcome_msg = "Welcome to BestBuy Deals. Are you interested in today's deals?"
+    welcome_msg = "Welcome to Indian Institute of Information Technology's Headlines. Are you interested in the latest updates?"
     return question(welcome_msg)
 
 @ask.intent('YesIntent')
-def ShareDeals():
-    deals = GetDeals()
-    deals_msg = "The top deals for today are {}".format(deals)
-    return statement(deals_msg)
+def Shareevents():
+    events = GetEvents()
+    events_msg = "Here are the latest updates : {},{},{},{} and {}".format(events[0],events[1],events[2],events[3],events[4])
+    return statement(events_msg)
 
 @ask.intent('NoIntent')
 def NoIntent():

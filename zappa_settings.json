@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "app_function": "deals.app",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "alexa-bestbuy",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-c8oh4ectg"
+    }
+}

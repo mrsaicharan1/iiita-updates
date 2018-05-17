@@ -1,2 +1,2 @@
-# IIIT-Allahabad events
-An alexa skill which fetches the recent updates from Indian Institute of Information Technology ,Allahabad
+# Alexa-BestBuy
+An alexa skill which provides the top 5 deals of the day using voice automation for Best Buy.
