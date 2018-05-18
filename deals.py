@@ -37,5 +37,23 @@ def NoIntent():
     exit_text = 'Okay then! Bye!'
     return statement(exit_text)
 
+@ask.intent('AMAZON.StopIntent')
+def stop():
+    return statement("Goodbye")
+
+
+@ask.intent('AMAZON.CancelIntent')
+def cancel():
+    return statement("Goodbye")
+
+@ask.intent('AMAZON.HelpIntent')
+def help():
+    return question("Welcome to the triple i. t. skill. This skill is used to get insights about triple i. t. Allahabad's latest happenings.You can activate this skill by saying start triple i. t.Do you want to listen to the latest updates of triple i. t. ?")
+
+@ask.session_ended
+def session_ended():
+    return "{}", 200
+
+
 if __name__ == '__main__':
     app.run(debug=True)
