@@ -1,6 +1,9 @@
 # iiita-updates
 
-*This skill fetches the latest events which have been happening around at Indian Institute of Information Technology ,Allahabad
+*This skill fetches the latest events which have been happening around at Indian Institute of Information Technology,Allahabad
 
-*It contains intents to receive help about the skill,cancel and abort it as well.
+*The skill responds to your commands and questions by providing you help with the usage of the commands. It also contains intents which stop/cancel the skill.
+
+*Hosted on AWS using Zappa.
+
 
