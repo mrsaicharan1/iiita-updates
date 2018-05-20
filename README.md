@@ -6,4 +6,8 @@
 
 *Hosted on AWS using Zappa.
 
+*Implemented in Flask-ask where the intents are mpped to the decorators for easy navigation.
+
+*Information is scraped from www.iiita.ac.in using beautifulsoup4 library.
+
 
